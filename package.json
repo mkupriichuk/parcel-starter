@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "spell": "yaspeller dist/*.html",
     "dev": "parcel src/index.pug -p 3000",
     "clean": "rimraf ./dist",
     "lint": "stylelint src/styles/**/*.sass",
@@ -22,8 +21,7 @@
     "pug": "^2.0.4",
     "rimraf": "^3.0.0",
     "sass": "^1.22.10",
-    "stylelint": "^10.1.0",
-    "yaspeller": "^6.0.0"
+    "stylelint": "^10.1.0"
   },
   "browserslist": [
     "last 2 versions",
@@ -31,32 +29,5 @@
     "ie >= 9",
     "ios >= 6"
   ],
-  "staticPath": "public",
-  "yaspeller": {
-    "ignoreCapitalization": true,
-    "dictionary": [
-      "GPG",
-      "1F710E4D",
-      "WhatsApp",
-      "WeChat",
-      "NSFW",
-      "GitHub",
-      "Autoprefixer",
-      "PostCSS",
-      "Browserslist",
-      "Instagram",
-      "Linguopunk",
-      "ru",
-      "sitnik",
-      "Телеграм",
-      "ВКонтакте",
-      "Твиттер",
-      "Гитхаб",
-      "Автопрефиксер",
-      "Браузерслист",
-      "фронтенд",
-      "Инстаграм",
-      "Лингвопанк"
-    ]
-  }
+  "staticPath": "public"
 }
