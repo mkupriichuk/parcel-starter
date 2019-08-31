@@ -1,7 +1,7 @@
 const tinify = require("tinify");
 const fs = require("fs");
 
-tinify.key = "Y4LmWPV5rW05prxwg627WGpPCP0dBncd";
+tinify.key = "";
 
 let imgArr = getFiles('./dist'); // we call the function, in the form of a parameter, we pass the folder in which we will be at the time the script is executed
 
