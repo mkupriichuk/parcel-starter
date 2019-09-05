@@ -17,3 +17,18 @@ http://localhost:3000/
 ```
 $ npm run build
 ```
+
+## 3. compress your images with tinify
+
+- go to config/tinify.config.js and add tinify api key, then run script:
+
+```
+$ npm run tinify
+```
+## 4. purify css
+
+- go to config/purify.config.js and change cssfile name, then run script:
+
+```
+$ npm run purify
+```
