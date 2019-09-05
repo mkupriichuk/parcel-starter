@@ -1,5 +1,5 @@
 [
-  "привет", // someword1 = someword1 and Someword1
-  "privet", // Someword2 = Someword2
-  "максим"
+    "someword1", // someword1 = someword1 and Someword1
+    "Someword2", // Someword2 = Someword2
+    "someword3"
 ]
