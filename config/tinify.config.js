@@ -1,12 +1,12 @@
 const tinify = require("tinify");
-const fs = require("fs");
+const fs = require("fs-extra");
 
 tinify.key = "";
 
 
 let root;
 let imagesDir = './dist/images/'; 
-if (fs.existsSync(imagesDir)) {
+if (fs.pathExistsSync(imagesDir)) {
   root = './dist/images';
 } else {
   root = './dist';
