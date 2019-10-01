@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.3",
@@ -27,10 +27,10 @@
     "pug": "^2.0.4",
     "purify-css": "^1.2.5",
     "rimraf": "^3.0.0",
-    "sass": "^1.22.10",
-    "stylelint": "^10.1.0",
+    "sass": "^1.22.12",
+    "stylelint": "^11.0.0",
     "tinify": "^1.6.0-beta.2",
-    "yaspeller": "^6.0.0"
+    "yaspeller": "^6.0.1"
   },
   "browserslist": [
     "last 2 versions",
