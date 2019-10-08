@@ -1,13 +1,7 @@
 const purify = require('purify-css');
 const fs = require('fs-extra');
 
-let root;
-let cssDir = './dist/css/'; 
-if (fs.pathExistsSync(cssDir)) {
-  root = './dist/css';
-} else {
-  root = './dist';
-}
+let root = fs.pathExistsSync('./dist/css/') ? './dist/css/' : './dist';
 
 let cssArr = getFiles(root);
 

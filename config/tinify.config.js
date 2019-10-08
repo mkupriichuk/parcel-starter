@@ -4,13 +4,7 @@ const fs = require("fs-extra");
 tinify.key = "";
 
 
-let root;
-let imagesDir = './dist/images/'; 
-if (fs.pathExistsSync(imagesDir)) {
-  root = './dist/images';
-} else {
-  root = './dist';
-}
+let root = fs.pathExistsSync('./dist/images') ? './dist/images' : './dist';
 
 
 let imgArr = getFiles(root); // we call the function, in the form of a parameter, we pass the folder in which we will be at the time the script is executed
