@@ -12,12 +12,7 @@ const fontsDir = './dist/fonts';
 function getFiles(dirPath, files_) {
   files_ = files_ || [];
   let files = fs.readdirSync(dirPath);
-  for (let i in files) {
-    let name = files[i];
-    if (~name.indexOf('.css') | ~name.indexOf('.html') | ~name.indexOf('.woff') | ~name.indexOf('.woff2') | ~name.indexOf('.js') | ~name.indexOf('.webp')|~name.indexOf('.svg')|~name.indexOf('.png') || ~name.indexOf('.jpg') || ~name.indexOf('.jpeg') || ~name.indexOf('.JPG')) {
-      files_.push(name);
-    }
-  }
+  files.forEach(file => files_.push(file))
   return files_;
 }
 
@@ -40,20 +35,22 @@ function htmlPath() {
   
       let css = 'link rel="stylesheet" href="';
       let js = 'script src="';
-      let backgroundImage = 'style="background-image:url(';
+      let background = 'background:url(';
+      let backgroundImage = 'background-image:url(';
       let img = 'img src="';
       let imgClass = '" src="';
       let spriteUse = 'use xlink:href="sprite';
       let mapObj = {
         [css]: 'link rel="stylesheet" href="css/',
         [js]: 'script src="js/',
-        [backgroundImage]: 'style="background-image:url(images/',
+        [background]: 'background:url(images/',
+        [backgroundImage]: 'background-image:url(images/',
         [img]: 'img src="images/',
         [imgClass]: '" src="images/',
         [spriteUse]: 'use xlink:href="images/sprite'
       };
   
-      let newValue = data.replace(/link rel="stylesheet" href="|script src="|style="background-image:url\(|img src="|" src="|use xlink:href="sprite/gi, function(matched) {
+      let newValue = data.replace(/link rel="stylesheet" href="|script src="|background-image:url\(|background:url\(|img src="|" src="|use xlink:href="sprite/gi, function(matched) {
         return mapObj[matched];
       });
   
