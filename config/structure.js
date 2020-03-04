@@ -30,31 +30,19 @@ function htmlPath() {
 
   for (let i in html) {
     let file = html[i];
-    fs.readFile(dirPath + '/' + file, 'utf-8', function(err, data) {
+    fs.readFile(dirPath + '/' + file, 'utf-8', function (err, data) {
       if (err) throw err;
-  
-      let css = 'link rel="stylesheet" href="';
-      let js = 'script src="';
-      let background = 'background:url(';
-      let backgroundImage = 'background-image:url(';
-      let img = 'img src="';
-      let imgClass = '" src="';
-      let spriteUse = 'use xlink:href="sprite';
-      let mapObj = {
-        [css]: 'link rel="stylesheet" href="css/',
-        [js]: 'script src="js/',
-        [background]: 'background:url(images/',
-        [backgroundImage]: 'background-image:url(images/',
-        [img]: 'img src="images/',
-        [imgClass]: '" src="images/',
-        [spriteUse]: 'use xlink:href="images/sprite'
-      };
-  
-      let newValue = data.replace(/link rel="stylesheet" href="|script src="|background-image:url\(|background:url\(|img src="|" src="|use xlink:href="sprite/gi, function(matched) {
-        return mapObj[matched];
-      });
-  
-      fs.writeFile(dirPath + '/' + file, newValue, 'utf-8', function(err) {
+
+      const result = data
+        .replace(/link rel="stylesheet" href="/g, 'link rel="stylesheet" href="css/')
+        .replace(/script src="/g, 'script src="js/')
+        .replace(/background:url\(/g, 'background:url(images/')
+        .replace(/background-image:url\(/g, 'background-image:url(images/')
+        .replace(/img src="/g, 'img src="images/')
+        .replace(/" src="/g, '" src="images/')
+        .replace(/use xlink:href="sprite/g, 'use xlink:href="images/sprite');
+
+      fs.writeFile(dirPath + '/' + file, result, 'utf-8', function (err) {
         if (err) throw err;
         console.log('htmlPath complete');
       });
@@ -70,28 +58,17 @@ function cssPath() {
   for (let i in css) {
     let file = css[i];
 
-    fs.readFile(dirPath + '/' + file, 'utf-8', function(err, data) {
+    fs.readFile(dirPath + '/' + file, 'utf-8', function (err, data) {
       if (err) throw err;
-  
-      let fontSrc = 'src:url(';
-      let fontUrl = ',url(';
-      let background = ' url(';
-      let background2 = 'background:url(';
-      let backgroundImage = 'background-image:url(';
-  
-      let mapObj = {
-        [fontSrc]: 'src:url(../fonts/',
-        [fontUrl]: ',url(../fonts/',
-        [background]: ' url(../images/',
-        [background2]: 'background:url(../images/',
-        [backgroundImage]: 'background-image:url(../images/'
-      };
-  
-      let newValue = data.replace(/src:url\(|,url\(| url\(|background:url\(|background-image:url\(/gi, function(matched) {
-        return mapObj[matched];
-      });
-  
-      fs.writeFile(dirPath + '/' + file, newValue, 'utf-8', function(err) {
+
+      const result = data
+        .replace(/src:url\(/g, 'src:url(../fonts/')
+        .replace(/,url\(/g, ',url(../fonts/')
+        .replace(/ url\(/g, ' url(../images/')
+        .replace(/background:url\(/g, 'background:url(../images/')
+        .replace(/background-image:url\(/g, 'background-image:url(../images/');
+
+      fs.writeFile(dirPath + '/' + file, result, 'utf-8', function (err) {
         if (err) throw err;
         console.log('cssPath complete');
       });
