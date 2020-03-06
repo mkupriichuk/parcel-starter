@@ -41,7 +41,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
   }
 
 
-  // replace all other resources in html
+  // replace links in html
   html.forEach(
     file => {
       assetsForHtml.forEach(name => {
