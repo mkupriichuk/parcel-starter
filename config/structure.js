@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-const fs = require('fs');
-const path = require('path');
+const { readdir, existsSync, mkdirSync, rename} = require('fs');
+const { join } = require('path');
 const replace = require('replace-in-file');
 const escapeRegExp = require('lodash.escaperegexp');
 
@@ -11,7 +11,7 @@ let jsDir = 'js'
 let cssDir = 'css'
 let fontsDir = 'fonts'
 
-fs.readdir(`./${baseDir}`, (err, files) => {
+readdir(`./${baseDir}`, (err, files) => {
 
 
   let css = files.filter(ext => ext.endsWith('.css'));
@@ -29,8 +29,8 @@ fs.readdir(`./${baseDir}`, (err, files) => {
 
 
   const createDir = (dir, arr) => {
-    if (!fs.existsSync(path.join(__dirname, `../${baseDir}`, dir)) && arr.length != 0) {
-      fs.mkdirSync(path.join(__dirname, `../${baseDir}`, dir));
+    if (!existsSync(join(__dirname, `../${baseDir}`, dir)) && arr.length != 0) {
+      mkdirSync(join(__dirname, `../${baseDir}`, dir));
     }
   }
 
@@ -73,7 +73,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
             break
         }
         const results = replace.sync({
-          files: path.join(baseDir, file),
+          files: join(baseDir, file),
           from: new RegExp(escapeRegExp(name), 'g'),
           to: dir + name
         })
@@ -87,7 +87,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
   //   file => {
   //     maps.forEach(name => {
   //       let options = {
-  //         files: path.join(baseDir, file),
+  //         files: join(baseDir, file),
   //         from: name,
   //         to: '../' + jsDir + '/' + name
   //       }
@@ -114,7 +114,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
             break
         }
         const results = replace.sync({
-          files: path.join(baseDir, file),
+          files: join(baseDir, file),
           from: new RegExp(escapeRegExp(name), 'g'),
           to: '../' + dir + '/' + name
         })
@@ -142,7 +142,7 @@ fs.readdir(`./${baseDir}`, (err, files) => {
           assetPath = cssDir
           break
       }
-      fs.rename(path.join(__dirname, `../${baseDir}`, name), path.join(__dirname, `../${baseDir}`, assetPath, name), function (err) {
+      rename(join(__dirname, `../${baseDir}`, name), join(__dirname, `../${baseDir}`, assetPath, name), function (err) {
         if (err) throw err
         console.log(`Successfully moved ${name}`)
       })
