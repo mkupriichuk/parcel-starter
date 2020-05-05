@@ -59,9 +59,6 @@ readdir(`./${baseDir}`, (err, files) => {
           case images.includes(name):
             dir = imagesDir + '/'
             break
-          case favicons.includes(name):
-            dir = ''
-            break
           case fonts.includes(name):
             dir = fontsDir + '/'
             break
