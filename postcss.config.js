@@ -1,3 +1,20 @@
+const sortMediaQueries = (a, b) => {
+  let A = a.replace(/\D/g, '');
+  let B = b.replace(/\D/g, '');
+
+  if (/max-width/.test(a) && /max-width/.test(b)) {
+    return B - A;
+  } else if (/min-width/.test(a) && /min-width/.test(b)) {
+    return A - B;
+  } else if (/max-width/.test(a) && /min-width/.test(b)) {
+    return 1;
+  } else if (/min-width/.test(a) && /max-width/.test(b)) {
+    return -1;
+  }
+
+  return 1;
+};
+
 module.exports = {
   plugins: {
     autoprefixer: {},
@@ -7,26 +24,3 @@ module.exports = {
   }
 }
 
-function isMax(mq) {
-  return /max-width/.test(mq);
-}
-
-function isMin(mq) {
-  return /min-width/.test(mq);
-}
-
-function sortMediaQueries(a, b) {
-	A = a.replace(/\D/g, '');
-	B = b.replace(/\D/g, '');
-
-  if (isMax(a) && isMax(b)) {
-    return B - A;
-  } else if (isMin(a) && isMin(b)) {
-    return A - B;
-  } else if (isMax(a) && isMin(b)) {
-    return 1;
-  } else if (isMin(a) && isMax(b)) {
-    return -1;
-  }
-  return 1;
-}
